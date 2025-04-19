@@ -60,10 +60,7 @@ router.post('/login',async(req,res)=> {
             return res.status(400).json({message: "Invalid Credentials"})
         }
     
-        const isMatch  = await userLogin.comparePassword(Password)
-        if(!isMatch){
-            return res.status(400).json({message: "Invalid Credentials"})
-        }
+      
     
         const token = jwt.sign({id: userLogin._id},process.env.JWT_SECRET,{
             expiresIn: '30d'
